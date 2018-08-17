@@ -92,5 +92,5 @@ const data =
         }
     ];
 
-export default array;
+export default data;
     

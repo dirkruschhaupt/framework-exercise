@@ -37,13 +37,13 @@ class Post extends Component {
       let comments = this.state.numberOfComments;
       let postedDate = this.state.date.slice(0, 15)
 
-      for(let i = 0; i < data.length; i++) {
-        let userData = data[i];
-        let image = userData.image;
-        let title = userData.title;
-        let article = userData.article;
-        let author = userData.author;
-        let vote = userDate.vote;
+      // for(let i = 0; i < data.length; i++) {
+      //   let userData = data[i];
+      //   let image = userData.image;
+      //   let title = userData.title;
+      //   let article = userData.article;
+      //   let author = userData.author;
+        //let votes = userDate.votes;
       
         
 
@@ -51,35 +51,39 @@ class Post extends Component {
           <div className="row mt-5 bg-light border rounded">
 
             <div className="col-xs-12 col-sm-4 col-lg-3">
-              <img className="img-fluid rounded p-3" src={image} alt={author}/> 
+              <img className="img-fluid rounded p-3" src={this.props.post.image} alt={this.props.post.author}/> 
             </div>
     
             <div className="col-xs-12 col-sm-6 col-lg-7 p-3">
 
             <header className="font-weight-bold">
-              <span>{title} | ^ {vote}</span>
+              <span>{this.props.post.title} | ^ votes</span>
             </header>
                 
-            <p>{article}</p>
+            <p>{this.props.post.article}</p>
 
             <span>{postedDate} | {comments} comments</span>
                  
             </div>
 
             <div className="col-xs-12 col-sm-2 p-3 text-right">
-              <span>{author}</span>
+              <span>{this.props.post.author}</span>
             </div>
 
           </div>
 
         );
-      }
+      //}
     }
     
 }
 
 class App extends Component {
-    
+  constructor(props) {
+    super(props)
+  }
+
+
     render() { 
         
         return (
@@ -95,7 +99,7 @@ class App extends Component {
               <div className="container-fluid">
                 <div className="row d-flex justify-content-center">
                   <div className="col-11">
-                  <Post />
+                  {data.map(post => <Post post = {post} />)}
                 </div>
               </div>
             </div>
