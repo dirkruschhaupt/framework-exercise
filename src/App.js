@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import array from './data.js';
+import data from './data.js';
 //import Form from "./Form";
 import './App.css';
 
 let header = 'Read-It';
 
-console.log(array);
 
 function Comment(props) {
     return (
@@ -20,6 +19,7 @@ function Image(props) {
     <img className="img-fluid rounded p-3" src={props.image} alt={props.author}/>
   );
 }
+
 
 class Post extends Component {
 
@@ -37,32 +37,43 @@ class Post extends Component {
       let comments = this.state.numberOfComments;
       let postedDate = this.state.date.slice(0, 15)
 
-      return (
-        <div className="row mt-5 bg-light border rounded">
+      for(let i = 0; i < data.length; i++) {
+        let userData = data[i];
+        let image = userData.image;
+        let title = userData.title;
+        let article = userData.article;
+        let author = userData.author;
+        let vote = userDate.vote;
+      
+        
 
-          <div className="col-xs-12 col-sm-4 col-lg-3">
-            <img className="img-fluid rounded p-3" src={array[0].image} alt={array[0].author}/> 
-          </div>
+        return (
+          <div className="row mt-5 bg-light border rounded">
+
+            <div className="col-xs-12 col-sm-4 col-lg-3">
+              <img className="img-fluid rounded p-3" src={image} alt={author}/> 
+            </div>
     
-          <div className="col-xs-12 col-sm-6 col-lg-7 p-3">
+            <div className="col-xs-12 col-sm-6 col-lg-7 p-3">
 
             <header className="font-weight-bold">
-              <span>{array[0].title} | ^ {array[0].vote}</span>
+              <span>{title} | ^ {vote}</span>
             </header>
                 
-            <p>{array[0].article}</p>
+            <p>{article}</p>
 
             <span>{postedDate} | {comments} comments</span>
                  
+            </div>
+
+            <div className="col-xs-12 col-sm-2 p-3 text-right">
+              <span>{author}</span>
+            </div>
+
           </div>
 
-          <div className="col-xs-12 col-sm-2 p-3 text-right">
-            <span>{array[0].author}</span>
-          </div>
-
-        </div>
-
-      );
+        );
+      }
     }
     
 }
