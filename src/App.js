@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import array from './data.js';
+//import Form from "./Form";
 import './App.css';
 
 let header = 'Read-It';
@@ -77,6 +78,7 @@ class App extends Component {
             </header>
             <nav >
               <input type="text" className="font-weight-bold m-3" placeholder="Filter"></input>
+              <a>sort by votes</a>
               <button type="button" className="btn btn-secondary m-3 float-right">New Post</button>
             </nav>
               <div className="container-fluid">
